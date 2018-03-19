@@ -47,7 +47,13 @@
 <row name="password" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="avatarpic" null="1" autoincrement="0">
+<row name="avatar" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="first_name" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="last_name" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
@@ -104,7 +110,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="519" y="230" name="booking">
+<table x="502" y="176" name="booking">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -121,10 +127,6 @@
 <row name="client_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="client" row="id" />
-</row>
-<row name="contractor_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="contractor" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
