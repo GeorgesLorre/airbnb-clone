@@ -1,7 +1,7 @@
 class Service < ApplicationRecord
   belongs_to :contractor
   has_many :pictures, as: :picturable
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
 
   validates :name, presence: true
