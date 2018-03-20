@@ -6,7 +6,7 @@ class ServicesController < ApplicationController
   def index
     @services = Service.all
   end
-  
+
   def show
 
   end
@@ -17,7 +17,7 @@ class ServicesController < ApplicationController
 
   def update
 
-    @service.update(ervice_params)
+    @service.update(service_params)
     redirect_to service_path(@service)
   end
 
