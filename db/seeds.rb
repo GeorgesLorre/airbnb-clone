@@ -5,23 +5,65 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+puts 'destroying current records'
+
+Review.destroy_all
+Booking.destroy_all
+Service.destroy_all
+Client.destroy_all
+Contractor.destroy_all
+User.destroy_all
+
+puts 'destroyed'
 
 
-u = User.create({first_name: 'danny', last_name: 'thetester', avatar: '1223', email: 'azez@gmail.com', password: 'zaijdajzn'})
-c = Client.new
-c.user = u
-c.save
+puts 'seeding'
 
-con = Contractor.new
-con.user = u
-con.save
+10.times do
 
-ser = Service.new
-ser.contractor = con
-ser.save
+  # create 10 users
+  userInstance = User.create( {first_name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name,
+              email: Faker::Internet.email,
+              password: Faker::Internet.password} )
 
-o = User.create({first_name: 'dannysecond', last_name: 'thetester', avatar: '1223', email: 'azez@gmail.com', password: 'zaijdajzn'})
-book = Booking.new
-book.service = ser
-book.client = o
-book.save
+  # make each user a client and contractor
+  clientInstance = Client.new
+  clientInstance.user = userInstance
+  clientInstance.save
+  contractorInstance = Contractor.new
+  contractorInstance.user = userInstance
+  contractorInstance.save
+
+  # give each contractor a service they offer
+  serviceInstance = Service.new( {name: Faker::Job.title,
+                 description: Faker::ChuckNorris.fact,
+                 price: rand(1000..10000),
+                 location: Faker::Simpsons.location,
+                 category: Faker::Job.field} )
+  serviceInstance.contractor = contractorInstance
+  serviceInstance.save
+
+  # create 20 random bookings and assign a random service and client
+  2.times do
+  bookingInstance = Booking.new( {date: Faker::Date.forward(50),
+                                  price: rand(1000..10000)} )
+  bookingInstance.service = Service.order("random()").first
+  bookingInstance.client = Client.order("random()").first
+  bookingInstance.save
+  end
+
+  # create 50 random reviews and assign to a random booking
+  5.times do
+  reviewInstance = Review.new( {rating: rand(0..5),
+                                description: Faker::Hipster.paragraph} )
+  reviewInstance.booking = Booking.order("random()").first
+  reviewInstance.save
+  end
+end
+
+puts 'done'
+
+
