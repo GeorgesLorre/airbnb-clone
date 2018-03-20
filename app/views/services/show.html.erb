@@ -1,2 +1,73 @@
-<h1>Services#show</h1>
-<p>Find me in app/views/services/show.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<div class="wrapper">
+<%= link_to 'Delete',  @service,  method: :delete, data: { confirm: 'Are you sure?' }%> |
+<%= link_to "Edit", "#", "data-toggle" => "modal", 'data-target' => '#editReviewModal' %>
+ |
+<%= link_to 'Back', services_path %>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><%= @service.name %></h2>
+      </div>
+      <div class="col-md-12">
+        <h4><%= @service.location %></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="show-service-image">
+          <img src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg" alt="gardener">
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <h4><%= @service.description %></h4>
+        <h5>€<%= @service.price %></h5>
+      </div>
+    </div>
+
+    <div class="service-reviews">
+      <% @service.reviews.each do |review| %>
+      <div class="service-review">
+        <div class="row">
+          <div class="col-md-8">
+            <%=  review.description %></div>
+
+            <div class="col-md-2">
+              <%= Review.first.booking.client.user.first_name %>
+              <%= Review.first.booking.client.user.last_name %>
+            </div>
+            <div class="col-md-2">
+              <%= '*' * review.rating%>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
+</div>
+

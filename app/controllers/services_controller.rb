@@ -6,8 +6,25 @@ class ServicesController < ApplicationController
   def index
     @services = Service.all
   end
-
+  
   def show
+
+  end
+
+  def edit
+
+  end
+
+  def update
+
+    @service.update(ervice_params)
+    redirect_to service_path(@service)
+  end
+
+  def destroy
+
+    @service.destroy
+    redirect_to services_path
   end
 
   def new
@@ -24,15 +41,6 @@ class ServicesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private
