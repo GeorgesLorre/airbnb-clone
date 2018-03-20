@@ -1,0 +1,13 @@
+<h1>Services#new</h1>
+<p>Find me in app/views/services/new.html.erb</p>
+
+<%= simple_form_for(@service) do |f| %>
+<%=f.input :name %>
+<%=f.input :description %>
+<%=f.input :price %>
+<%=f.input :location %>
+<%=f.input :category %>
+<%=f.submit 'Create', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to 'Back to services', services_path %>
