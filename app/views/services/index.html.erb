@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Home page</title>
+  <div class="topnav">
+    <a class="active" href="#home"></a>
+  </div>
+</head>
+<body>
+  <div class="banner" style="background-color: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), ;">
+    <div class="banner-content">
+      <h1 class="text-center"><input type="text" placeholder="Search a job"> </h1>
+      <!-- <a href="" class="btn-yours">submit</a> -->
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="service-cards">
+        <!-- Code your cards  here -->
+        <div class="card-wrapper col-xs-12">
+          <% @services.each do |service| %>
+          <%= link_to service_path(service) do %>
+          <div class="card">
+            <div class="card-body">
+              <div class="card-category">
+                <%= service.category %>
+              </div>
+              <div class="card-description">
+                <h2><%= service.name %> </h2>
+              </div>
+              <div>
+                <img class="card-avatar avatar avatar-large" src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg">
+                <a class="card-link" href="#"></a>
+              </div>
+              <div class="card-location">
+                <p><%= service.location %></p>
+              </div>
+              <div class="controls">
+                <a href="#"><i class="fa fa-star"></i></a>
+                <a href="#"><i class="fa fa-share"></i></a>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
