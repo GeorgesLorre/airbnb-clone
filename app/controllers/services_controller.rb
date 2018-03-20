@@ -1,4 +1,5 @@
 class ServicesController < ApplicationController
+
   before_action :set_service, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, except: [:create, :update, :destroy]
 

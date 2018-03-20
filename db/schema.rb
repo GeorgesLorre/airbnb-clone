@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20180319154742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "picturable_type"
-    t.bigint "picturable_id"
+    t.bigint "picturable_id", default: 0
     t.index ["picturable_type", "picturable_id"], name: "index_pictures_on_picturable_type_and_picturable_id"
   end
 
@@ -98,7 +98,7 @@ ActiveRecord::Schema.define(version: 20180319154742) do
     t.datetime "updated_at", null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "avatar"
+    t.string "avatar", default: "None"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
