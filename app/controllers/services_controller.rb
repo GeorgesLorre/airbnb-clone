@@ -16,7 +16,6 @@ class ServicesController < ApplicationController
   end
 
   def update
-
     @service.update(service_params)
     redirect_to service_path(@service)
   end
@@ -33,10 +32,11 @@ class ServicesController < ApplicationController
   end
 
   def create
+
     @service = Service.new(service_params)
     @contractor = current_user.contractor
     @service.contractor = @contractor
-    if @service.save
+    if @service.save!
       redirect_to service_path(@service)
     else
       render :new
@@ -49,6 +49,6 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:name, :description, :price, :location, :category)
+    params.require(:service).permit(:name, :description, :price, :location, :category, :photo )
   end
 end

@@ -1,3 +1,4 @@
 class Picture < ApplicationRecord
-  belongs_to :picturable, polymorphic: true
+  belongs_to :service
+  mount_uploader :url, PhotoUploader
 end
