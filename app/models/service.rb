@@ -10,5 +10,6 @@ class Service < ApplicationRecord
   validates :name, presence: true
   validates :location, presence: true
   validates :category, presence: true
+  mount_uploader :photo, PhotoUploader
 
 end
