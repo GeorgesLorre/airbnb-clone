@@ -24,11 +24,11 @@ puts 'seeding'
 10.times do
 
   # create 10 users
-  userInstance = User.create( {first_name: Faker::Name.first_name,
+  userInstance = User.new( {first_name: Faker::Name.first_name,
               last_name: Faker::Name.last_name,
               email: Faker::Internet.email,
               password: Faker::Internet.password} )
-
+  userInstance.remote_avatar_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI8C4r18JoraIL5qyaRuzh8DFKQrnAEMszI_nHq7Nk3rohuz4QeQ'
   # make each user a client and contractor
   clientInstance = Client.new
   clientInstance.user = userInstance
@@ -44,6 +44,7 @@ puts 'seeding'
                  location: Faker::Simpsons.location,
                  category: Faker::Job.field} )
   serviceInstance.contractor = contractorInstance
+  serviceInstance.remote_photo_url = 'https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/tHF1OBF/4k-organized-criminal-gangsters-in-dark-parking-lot-doing-a-drug-deal_h7fugeodye_thumbnail-full01.png'
   serviceInstance.save
 
   # create 20 random bookings and assign a random service and client

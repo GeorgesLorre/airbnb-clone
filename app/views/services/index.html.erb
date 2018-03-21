@@ -1,6 +1,6 @@
 <!-- searchbar -->
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/tHF1OBF/4k-organized-criminal-gangsters-in-dark-parking-lot-doing-a-drug-deal_h7fugeodye_thumbnail-full01.png');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.2) 0%, rgba(0,36,61,0.2) 50%), url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/tHF1OBF/4k-organized-criminal-gangsters-in-dark-parking-lot-doing-a-drug-deal_h7fugeodye_thumbnail-full01.png');">
   <div class="banner-content">
     <h1>Book a service</h1>
     <p>Find the right man for the job</p>
@@ -17,13 +17,14 @@
     <% @services.each do |service| %>
       <div class="col-xs-12 col-sm-4">
         <%= link_to service_path(service) do %>
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/g/200/300/?random');">
+        <div class="card"   style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%=  cl_image_path service.photo, height: 300, width: 400, crop: :fill %>')">
           <div class="card-category"><%= service.category %></div>
           <div class="card-description">
             <h2><%= service.name %></h2>
             <p><%= service.location %></p>
           </div>
-          <img class="card-user" src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg">
+          <img class="card-user" src="<%= cl_image_path service.contractor.user.avatar, height: 200, width: 200, crop: :fill, :gravity=>"face" %>">
         </div>
         <% end %>
       </div>
