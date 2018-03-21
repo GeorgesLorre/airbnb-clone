@@ -11,7 +11,7 @@
 
       <!-- Links when logged in -->
       <% if current_user.contractor.services.all.empty? %>
-        <%= link_to 'New', new_service_path %>
+        <%= link_to 'New', new_service_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <% end %>
       <%= link_to "Browse", services_path, class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Dashboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
