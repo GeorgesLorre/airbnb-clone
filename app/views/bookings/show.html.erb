@@ -1,7 +1,7 @@
 <div class="container">
   <%= @booking.date %>
   <%= @booking.service.name %>
-  <%= link_to "Cancel", service_booking_path(booking),
+  <%= link_to "Cancel", services_path,
   method: :delete,
   data: {confirm: "Are you sure?"}%>
 </div>
