@@ -29,6 +29,7 @@ class ServicesController < ApplicationController
 
   def new
     @service = Service.new
+    @service.pictures.build
     @user = current_user
   end
 
@@ -49,6 +50,6 @@ class ServicesController < ApplicationController
   end
 
   def service_params
-    params.require(:service).permit(:name, :description, :price, :location, :category)
+    params.require(:service).permit(:name, :description, :price, :location, :category, :pictures, pictures_attributes: [:url, :url_cache])
   end
 end
