@@ -7,7 +7,7 @@
 <%=f.input :price %>
 <%=f.input :location %>
 <%=f.input :category %>
-<%=f.simple_fields_for :pictures do |ff|  %>
+<%=f.simple_fields_for :pictures, multipart: true do |ff|  %>
   <%= ff.input :url, as: :file %>
   <%= ff.input :url_cache, as: :hidden %>
 <% end %>

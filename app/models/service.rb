@@ -1,6 +1,6 @@
 class Service < ApplicationRecord
   belongs_to :contractor
-  has_many :pictures
+  has_many :pictures, inverse_of: :service
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings
   accepts_nested_attributes_for :pictures
