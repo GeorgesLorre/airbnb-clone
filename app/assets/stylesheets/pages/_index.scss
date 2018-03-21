@@ -1,5 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "booking";
 
 @import "show";
 
@@ -22,7 +23,7 @@
   height: 60vh;
 }
 .banner-content {
-  padding-top: 50px;
+  padding-top: 100px;
 }
 
 .card-footer{

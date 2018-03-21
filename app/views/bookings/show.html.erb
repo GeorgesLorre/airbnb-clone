@@ -1,4 +1,23 @@
-<div class="container">
-  <%= @booking.date %>
-  <%= @booking.service.name %>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your booking summary</title>
+</head>
+<body>
+<div class="tittle">
+  <h1>Your Booking summary</h1>
 </div>
+<div class="container">
+  <p><%= @booking.date %></p>
+  <p><%= @booking.service.name %></p>
+  <p><h4>Price: <%= @booking.price%>€</h4>
+  </p>
+  <a href="" class="btn-yours">Confirm </a>
+</div>
+
+
+</body>
+</html>
