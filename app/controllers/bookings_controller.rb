@@ -17,6 +17,12 @@ class BookingsController < ApplicationController
     redirect_to service_booking_path(@booking.service, @booking)
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to :root
+  end
+
   private
 
   def booking_params

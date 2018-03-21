@@ -1,0 +1,56 @@
+.service-details{
+  background-color: #626868;
+  color: $textcolor;
+  position: relative;
+  height: 60vh;
+  .service-book{
+  }
+  .service-links{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+  a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    }
+  }
+  .service-image{
+    position: absolute;
+    border-radius: 8px;
+    bottom: 20px;
+    left: 20px;
+  }
+  .service-book{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+  .service-name{
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    color: white;
+    text-style: bold;
+  }
+  .service-description{
+    width: 400px;
+    text-align: left;
+    color: white;
+    position: absolute;
+    top: 200px;
+    left: 450px;
+  }
+  .service-price{
+    position: absolute;
+    bottom: 17px;
+    left: 400px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+  }
+}

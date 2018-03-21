@@ -4,7 +4,7 @@
   <div class="banner-content">
     <h1>Book a service</h1>
     <p>Find the right man for the job</p>
-    <h3 class="text-center"><input type="text" placeholder="Search a job"> </h3>
+    <h4 class="text-center"><input type="text" placeholder="Search a job"> </h4>
   </div>
 </div>
 
@@ -16,6 +16,7 @@
   <div class="row">
     <% @services.each do |service| %>
       <div class="col-xs-12 col-sm-4">
+        <%= link_to service_path(service) do %>
         <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/g/200/300/?random');">
           <div class="card-category"><%= service.category %></div>
           <div class="card-description">
@@ -23,8 +24,8 @@
             <p><%= service.location %></p>
           </div>
           <img class="card-user" src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg">
-          <a class="card-link" href="#" ></a>
         </div>
+        <% end %>
       </div>
 
     <% end %>
