@@ -7,17 +7,37 @@
   <title>Your booking summary</title>
 </head>
 <body>
-<div class="tittle">
+  <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/tHF1OBF/4k-organized-criminal-gangsters-in-dark-parking-lot-doing-a-drug-deal_h7fugeodye_thumbnail-full01.png');">
+
+  <div class="picture" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://www.massimovillas.com/wp-content/uploads/2016/04/villa-in-tuscany-italy-767x350.jpg');">
+  </div>
+
+<div class="tittle" >
   <h1>Your Booking summary</h1>
 </div>
-<div class="container">
+<div class="box">
   <p><%= @booking.date %></p>
-  <p><%= @booking.service.name %></p>
-  <p><h4>Price: <%= @booking.price%>€</h4>
+  <p style="font-size: 35px"><%= @booking.service.name %></p>
+  <p style="font-size: 25px; margin-top: 5px;"><%= @booking.service.category %></p>
+  <p style= "margin-right: 60px;"><h4>Price: <%= @booking.price%>2.586€</h4>
   </p>
-  <a href="" class="btn-yours">Confirm </a>
+  <p style= "margin-right: 40px;"><h4>Location: London</h4>
+  </p>
+<button class="btn-yours" type="button" style="background-color:#0F2333; ">Confirm</button>
+
 </div>
 
-
+<!--
+  <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://picsum.photos/g/200/300/?random');, margin-top: 50px;">
+          <div class="card-category"><%= @booking.service.category %></div>
+          <div class="card-description">
+            <h2><%= @booking.service.name %></h2>
+            <p><%= @booking.service.location %></p>
+          </div>
+          <img class="card-user" src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg">
+          <a class="card-link" href="#" ></a>
+        </div>
+      </div> -->
 </body>
 </html>

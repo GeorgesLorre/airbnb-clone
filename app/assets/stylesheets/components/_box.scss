@@ -1,0 +1,48 @@
+.box {
+  background-color: #828382;
+  border-radius: 2px;
+  border-color: #616567;
+  border-width: 85px;
+  height: 60vh;
+  font-weight: bold;
+  width: 350px;
+  margin-left: 200px;
+  text-decoration: none;
+}
+.box h4 {
+  color: #EFF7FF;
+
+}
+.box {
+  position: relative;
+}
+.btn-yours {
+  position: absolute;
+  bottom: 90px;
+  text-align: center;
+  left: 96px;
+  text-decoration: none;
+  height: 80px;
+  width: 160px;
+  background-color: #0F2333;
+  border-radius: 3px;
+
+}
+.btn-yours:hover {
+  border: 2px #0F2333;
+  color: #CCCDCC;
+  text-shadow:
+  0.07em 0 black,
+  0 0.07em black,
+  -0.07em 0 black,
+  0 -0.07em black;
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.btn-confirm {
+  background-color: #0F2333;
+}
+
+
+
