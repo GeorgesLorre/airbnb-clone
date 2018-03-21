@@ -2,57 +2,73 @@
 <p id="notice"><%= notice %></p>
 
 <div class="wrapper">
-  <%= link_to 'Delete',  @service,  method: :delete, data: { confirm: 'Are you sure?' }%> |
-  <%= link_to "Edit", "#", "data-toggle" => "modal", 'data-target' => '#editReviewModal' %>
-  |
-  <%= link_to 'Back', services_path %>
+
+
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+
+    <!-- Detailed information about a service -->
+    <div class="service-details">
+
+      <div class="service-links">
+          <%= link_to 'Delete',  @service,  method: :delete, data: { confirm: 'Are you sure?' }%> |
+          <%= link_to "Edit", "#", "data-toggle" => "modal", 'data-target' => '#editReviewModal' %> |
+          <%= link_to 'Back', services_path %>
+      </div>
+
+      <div class="service-name">
         <h2><%= @service.name %></h2>
+        <h5><%= @service.location %></h5>
       </div>
-      <div class="col-md-12">
-        <h4><%= @service.location %></h4>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-5">
-        <div class="show-service-image">
-          <img src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg" alt="gardener">
-        </div>
-      </div>
-      <div class="col-md-5 col-md-offset-1">
-        <h4><%= @service.description %></h4>
 
-        <%= simple_form_for [@service,  @booking] do |f|%>
-          <%= f.input :date %>
-          <%= f.submit %>
+      <div class="service-description">
+        <p><%= @service.description %></p>
+      </div>
+
+      <div class="service-price">
+        <p>€ <%= @service.price %></p>
+      </div>
+
+
+      <img src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg" alt="gardener" class="service-image">
+
+
+      <div class="service-book">
+        <%= simple_form_for [@service,  @booking], wrapper: :inline_form, html: { class: 'form-inline' } do |f|%>
+          <%= f.input :date, label: 'Booking date', required: false %>
+          <%= f.submit "book", class: "btn btn-primary" %>
         <% end %>
-
       </div>
+
+
     </div>
 
-    <div class="service-reviews">
-      <% @service.reviews.each do |review| %>
-      <div class="service-review">
-        <div class="row">
-          <div class="col-md-8">
-            <%=  review.description %></div>
 
-            <div class="col-md-2">
-              <%= Review.first.booking.client.user.first_name %>
-              <%= Review.first.booking.client.user.last_name %>
-            </div>
-            <div class="col-md-2">
-              <%= '*' * review.rating%>
-            </div>
-          </div>
-        </div>
-        <% end %>
 
+  <!-- list of all the reviews for this service -->
+  <div class="reviews-list">
+    <% @service.reviews.each do |review| %>
+    <div class="review">
+      <img class="review-user" src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg">
+      <div class="review-name">
+        <h3><%= review.booking.client.user.first_name %> <%= review.booking.client.user.last_name %></h3>
+        <p><%= review.booking.date %></p>
+      </div>
+      <div class="review-body">
+        <p>
+          <%= review.description %>
+        </p>
+      </div>
+      <div class="review-status">
+        <p class="status pending">Rating  </p>
+        <p class="rating">
+          <% review.rating.times do %>
+          <i class="fas fa-star"></i>
+          <% end %>
+        </p>
       </div>
     </div>
+    <% end %>
   </div>
 
   <!-- Button trigger modal -->
