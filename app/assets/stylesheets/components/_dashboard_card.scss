@@ -9,8 +9,17 @@
   color: #CFC7C7;
 }
 
+.card-content h2 {
+  color: #CFC7C7;
+}
+
 .card-content h3 {
-  color: #37B686;
+  color: #F1D18A;
+  font-size: 29px;
+}
+
+.frame-bio h3 {
+  color: #4C6F7B;
   font-size: 29px;
 }
 
@@ -24,16 +33,12 @@
   color: #7F7F87;
 }
 
-h2 {
-  color: black;
-}
-
-.card.profile p {
+.card.profile {
   color: #7F7F87;
 }
 
 .btn {
-  background-color: #37B686;
+  background-color: #4C6F7B;
   border: 0;
   border-radius: 0;
   padding: 10px 25px;
@@ -42,7 +47,8 @@ h2 {
 }
 
 .btn:hover {
-  background-color: #37B686;
+  background-color: #4C6F7B;
   opacity: 0.7;
   border: 0;
 }
+

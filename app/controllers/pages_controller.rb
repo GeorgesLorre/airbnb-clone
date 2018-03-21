@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard_contractor
+    @services = Service.all
   end
 
   def dashboard_client
