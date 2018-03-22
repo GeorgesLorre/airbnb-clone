@@ -1,5 +1,6 @@
 /* Importing components */
 @import "components/dashboard_card";
+@import "components/tabs";
 
 body {
   margin: 0;
@@ -32,7 +33,7 @@ h3 {
 
 .grid {
   display: grid;
-  grid-template-rows: 50% 50%;
+  grid-template-rows: 37% 37% 25%;
   grid-auto-columns: 370px 1fr 1fr 1fr;
   height: 80vh;
   margin-top: 30px;
@@ -59,4 +60,14 @@ h3 {
 .repo {
   grid-column: 4 / span 1;
   grid-row: 1 / span 1;
+}
+
+.bookings {
+  grid-column: 1 / span 4;
+  grid-row: 3 / span 1;
+}
+
+.inbox {
+  display: flex;
+  align-items: center;
 }

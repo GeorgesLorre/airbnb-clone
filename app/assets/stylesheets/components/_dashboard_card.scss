@@ -2,14 +2,19 @@
   background: white;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   margin: 10px;
   color: #CFC7C7;
 }
 
+.card-services {
+  text-align: left;
+ ul {
+  list-style-type: none;
+ }
+}
+
 .card-content h2 {
+  padding-top: 30px;
   color: #CFC7C7;
 }
 
@@ -18,9 +23,11 @@
   font-size: 29px;
 }
 
-.frame-bio h3 {
+.frame-bio a {
   color: #4C6F7B;
   font-size: 29px;
+  flex: 0 0 50px;
+  text-align: left;
 }
 
 .card.bio h3 {
@@ -54,4 +61,18 @@
 
 .frame.bio {
   overflow: auto;
+}
+
+.bookings-in {
+     width: 95%;
+    position: absolute;
+    overflow: auto;
+    height: -webkit-fill-available;
+}
+
+.avatar {
+  width: 150px;
+  border-radius: 4px;
+  height: 200px;
+  padding-top: 44px;
 }
