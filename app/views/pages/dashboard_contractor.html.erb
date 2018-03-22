@@ -10,7 +10,8 @@
         </div>
         <div class="frame contributions">
           <div class="card-content">
-            <h3>99</h3>
+
+           <h3> <%= @bookings_count %> </h3>
             <p>Bookings received</p>
           </div>
         </div>
@@ -29,15 +30,16 @@
         <div class="frame bio">
           <div class="card-services">
             <h3>Services provided by <%= current_user.first_name%></h3>
-            <p class="text-justify">
-              <% @services.sample(3).each do |serv| %>
+              <% @services.sample(15).each do |serv| %>
               <ul>
                 <li> <%= link_to serv.name, service_path(serv) %> </li>
               </ul>
               <% end %>
-            </p>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+
+
+

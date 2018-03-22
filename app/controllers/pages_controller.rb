@@ -5,6 +5,7 @@ class PagesController < ApplicationController
 
   def dashboard_contractor
     @services = Service.all
+    @bookings_count = Booking.count_for(current_user.contractor)
   end
 
   def dashboard_client
