@@ -2,53 +2,52 @@
 <p id="notice"><%= notice %></p>
 
 <div class="wrapper">
-
-
-
   <div class="container">
+    <div class="row">
+      <div id="togglecardsize">
+        <div class="service-details">
+          <div class="service-links service-element">
+            <% if @service.contractor.user == current_user %>
+            <%= link_to 'Delete',  @service,  method: :delete, data: { confirm: 'Are you sure?' }%> |
+            <%= link_to "Edit", "#", "data-toggle" => "modal", 'data-target' => '#editReviewModal' %> |
+            <% end %>
+            <%= link_to 'Back', services_path %>
+          </div>
+          <div class="service-name service-element">
+            <h2><%= @service.name %></h2>
+          </div>
+          <div class="service-description service-element" id="service-description">
+            <p><%= @service.description %></p>
+          </div>
+          <%= cl_image_tag(@service.photo,
+          width: 300, height: 240, crop: :fill, class: 'service-image') %>
 
-    <!-- Detailed information about a service -->
-    <div class="service-details">
+          <div class="service-element" id="service-move">
+            <div class="service-price">
+              <p>€ <%= @service.price %></p>
+            </div>
 
-      <div class="service-links">
-        <% if @service.contractor.user == current_user %>
-        <%= link_to 'Delete',  @service,  method: :delete, data: { confirm: 'Are you sure?' }%> |
-        <%= link_to "Edit", "#", "data-toggle" => "modal", 'data-target' => '#editReviewModal' %> |
-        <% end %>
-        <%= link_to 'Back', services_path %>
+            <div class="service-book">
+              <%= simple_form_for [@service,  @booking], html: { class: 'form-inline' } do |f|%>
+              <%= f.input :date, label: false, required: false, class: " " %>
+              <%= f.submit "book", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+
+            <div class="service-location">
+              <%= link_to @service.location, "#", "class" => "btn btn-primary", "onclick" => "ToggleMap()" %>
+            </div>
+          </div>
+
+        </div>
       </div>
+      <div id="map-container"  data-markers="<%= @markers.to_json %>">
 
-      <div class="service-name">
-        <h2><%= @service.name %></h2>
-        <h5><%= @service.location %></h5>
       </div>
-
-      <div class="service-description">
-        <p><%= @service.description %></p>
-      </div>
-
-      <div class="service-price">
-        <p>€ <%= @service.price %></p>
-      </div>
-
-      <%= cl_image_tag(@service.photo,
-      width: 300, height: 260, crop: :fill, class: 'service-image') %>
-
-
-      <div class="service-book">
-        <%= simple_form_for [@service,  @booking], wrapper: :inline_form, html: { class: 'form-inline' } do |f|%>
-        <%= f.input :date, label: 'Booking date', required: false %>
-        <%= f.submit "book", class: "btn btn-primary" %>
-        <% end %>
-      </div>
-
-
     </div>
-
-    <h2>Reviews of this service (<%= @service.reviews.count %>)</h2>
-
     <!-- list of all the reviews for this service -->
     <div class="reviews-list">
+      <h2>Reviews of this service (<%= @service.reviews.count %>)</h2>
       <% @service.reviews.each do |review| %>
       <div class="review">
         <img class="review-user" src="https://www.grabagardener.com/wp-content/themes/storefront-child/assets/img/gardener-profile-6.jpg">
@@ -72,52 +71,108 @@
       </div>
       <% end %>
     </div>
+  </div>
+</div>
+<!-- Button trigger modal -->
 
-    <!-- Button trigger modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for(@service) do |f| %>
+        <%= f.error_notification %>
 
-    <!-- Modal -->
-    <div class="modal fade" id="editReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <%= simple_form_for(@service) do |f| %>
-            <%= f.error_notification %>
-
-            <div class="form-inputs">
-              <%=f.input :name %>
-              <%=f.input :description %>
-              <%=f.input :price %>
-              <%=f.input :location %>
-              <%=f.input :category %>
-              <%=f.input :photo%>
-              <%= f.input :photo_cache, as: :hidden %>
-            </div>
-
-            <div class="form-actions">
-              <%= f.button :submit %>
-            </div>
-            <% end %>
-          </div>
+        <div class="form-inputs">
+          <%=f.input :name %>
+          <%=f.input :description %>
+          <%=f.input :price %>
+          <%=f.input :location %>
+          <%=f.input :category %>
+          <%=f.input :photo%>
+          <%= f.input :photo_cache, as: :hidden %>
         </div>
+
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+        <% end %>
       </div>
     </div>
+  </div>
+</div>
 
-    <script type="text/javascript">
-      $(function() {
-        $('#booking_date').daterangepicker({
-          singleDatePicker: true,
-          showDropdowns: true
-        },
-        function(start, end, label) {
+<script type="text/javascript">
 
-        });
-      });
-    </script>
+  function createMap() {
+    const mapElement = document.getElementById('map');
+    const markers = JSON.parse(document.getElementById('map-container').dataset.markers);
+
+    if (mapElement) { // don't try to build a map if there's no div#map to inject in
+      // var uluru = ;
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: markers[0]
+    });
+    var marker = new google.maps.Marker({
+      position: markers[0],
+      map: map
+    });
+  }
+}
+function ToggleMap() {
+  var y = document.getElementById("togglecardsize");
+  var z = document.getElementById("service-move");
+  var p = document.getElementById("service-description")
+  var x = document.getElementById("service-map");
+  y.classList.add("col-md-8");
+  z.style.gridColumn = "1 / span 4";
+  z.style.gridRow = "5 / span 1";
+  p.style.gridRow = "3 /span 2"
+  if (x == null) {
+   var map =  `   <div id="service-map" class="stretchRight col-md-4">
+   <div class="">
+   <div
+   id="map"
+   style="width: 100%;
+   height: 50vh;"
+   data-markers="<%#= @markers.to_json %>"
+   ></div>
+   </div>
+   </div>  `
+   document.getElementById('map-container').innerHTML = map;
+   createMap();
+ } else {
+  if (x.style.display === "none" ) {
+    x.style.display = "block";
+    y.classList.add("col-md-8");
+    z.style.gridColumn = "1 / span 4";
+    z.style.gridRow = "5 / span 1";
+    p.style.gridRow = "3 /span 2"
+  } else {
+    x.style.display = "none";
+    y.classList.remove("col-md-8");
+    z.style.gridColumn = "2 /span 3";
+    z.style.gridRow = "4 / span 1";
+    p.style.gridRow = "3 /span 1"
+  }
+}
+}
+$(function() {
+  $('#booking_date').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true
+  },
+  function(start, end, label) {
+
+  });
+});
+</script>
 
