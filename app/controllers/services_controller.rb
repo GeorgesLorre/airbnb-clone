@@ -7,6 +7,10 @@ class ServicesController < ApplicationController
     @services = Service.all
   end
 
+  def contractor_services
+    @contractor_services = current_user.contractor.services
+  end
+
   def show
    @booking = Booking.new
   end

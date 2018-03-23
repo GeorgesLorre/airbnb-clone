@@ -6,4 +6,8 @@ class Booking < ApplicationRecord
 
   validates :date, presence: true
 
+  def self.link_contractor(contractor)
+    joins(:service).where(services: { contractor: contractor })
+  end
+
 end
