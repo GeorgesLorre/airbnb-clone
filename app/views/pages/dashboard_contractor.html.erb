@@ -28,7 +28,7 @@
       </div>
       <div class="frame bio">
         <div class="card-services">
-          <h3>Services provided by <%= current_user.first_name%></h3>
+          <h3>Services provided</h3>
           <% @current_user.contractor.services.each do |serv| %>
           <ul>
             <li> <%= link_to serv.name, service_path(serv) %> </li>
@@ -60,7 +60,7 @@
             </p>
           </div>
           <div class="message-status">
-            <p class="status pending"><%= bkg.date %></p>
+            <p class=""><%= bkg.date %></p>
             <p class="price"><%= bkg.price %> $</p>
           </div>
         </li>
