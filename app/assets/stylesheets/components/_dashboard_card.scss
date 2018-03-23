@@ -32,10 +32,13 @@
 }
 
 .frame-bio a {
-  color: #4C6F7B;
-  font-size: 29px;
-  flex: 0 0 50px;
-  text-align: left;
+    color: #4C6F7B;
+    font-size: 29px;
+    flex: 0 0 50px;
+    text-align: left;
+}
+.bio {
+  padding-left: 70px;
 }
 
 .card.bio h3 {
