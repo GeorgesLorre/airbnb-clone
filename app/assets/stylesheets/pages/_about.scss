@@ -1,22 +1,48 @@
 
 
+
 .avatars-about{
   // position: relative;
   left: 190px;
+
+.avatar-about{
+  padding-left: 5px;
+  border-radius:50%;
+   left: 190px;
+
   bottom: 90px;
   border-radius: 50px;
-  display: flex;
-  margin-left:170px;
+  margin-left:130px;
   margin-top:10px;
 
-}
+
+ }
+
 .card-about {
-  position: relative;
   text-align: text-center;
   padding-right: 200px;
 }
+
 .avatar-about{
   padding-left: 5px;
 }
 
+
+
+
+.card-hover{
+  transition:15ms;
+}
+.avatar{
+  padding-left: 5px;
+}
+.banner-2 {
+  height :100vh;
+  background-repeat: no-repeat;
+  width: 75%;
+  opacity: 70%;
+}
+.banner-2,h1{
+  color:#D9DDDD;
+}
 
