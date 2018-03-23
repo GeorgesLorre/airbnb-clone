@@ -1,6 +1,6 @@
-.banner{
- position: absolute;
-}
+// .banner-{
+//  position: absolute;
+// }
 
 .avatars {
   // position: relative;
@@ -17,11 +17,20 @@
   text-align: text-center;
   padding-right: 200px;
 }
+.card-hover{
+  transition:15ms;
+}
 .avatar{
   padding-left: 5px;
 }
-.card{
-  height: 100vh;
-
+.banner-2 {
+  height :100vh;
+  background-repeat: no-repeat;
+  width: 75%;
+  opacity: 70%;
 }
+.banner-2,h1{
+  color:#D9DDDD;
+}
+
 
