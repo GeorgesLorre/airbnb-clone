@@ -9,5 +9,4 @@ class Booking < ApplicationRecord
   def self.link_contractor(contractor)
     joins(:service).where(services: { contractor: contractor })
   end
-
 end
