@@ -18,6 +18,10 @@ class ServicesController < ApplicationController
    end
   end
 
+  def contractor_services
+    @contractor_services = current_user.contractor.services
+  end
+
   def show
      @booking = Booking.new
      @markers =[{ 'lat': @service.latitude, 'lng': @service.longitude }]

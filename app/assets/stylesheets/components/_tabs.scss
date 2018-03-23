@@ -1,0 +1,85 @@
+.tabs {
+  display: flex;
+  align-items: center;
+}
+.tab {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  opacity: 0.3;
+  border-bottom: 5px solid transparent;
+  text-decoration: none;
+  color: black;
+}
+.tab:hover {
+  opacity: 1;
+}
+.tab.active {
+  opacity: 1;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 5px solid #00A699;
+}
+
+.booking {
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.booking:last-child {
+  border-bottom: none;
+}
+
+.service-name {
+  flex-grow: 1;
+}
+
+
+.inbox {
+  border: 1px solid #dce0e0;
+  padding: 0 20px;
+  margin: 0;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+  color: #263646b5;
+}
+
+.message:last-child {
+  border-bottom: none;
+}
+.message-body {
+  flex-grow: 1;
+}
+.message-name {
+  padding-left: 10px;
+  min-width: 100px;
+}
+.message-name h3 {
+  font-size: 13px;
+  margin-bottom: 0px;
+}
+.message p {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.message-body {
+  padding-left: 10px;
+}
+.message-body {
+  padding-left: 20px;
+}
+.message-body strong{
+  color: #263646b5;
+}
+.message-body p {
+  margin: 6px 0;
+}

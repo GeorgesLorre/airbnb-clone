@@ -1,0 +1,78 @@
+    <div class="container text-center">
+      <div class="grid">
+
+        <div class="frame profile">
+          <div class="card-content">
+            <%= cl_image_tag current_user.avatar, class: "avatar" %>
+            <h2><%= current_user.first_name %> <%= current_user.last_name%></h2>
+          </div>
+        </div>
+        <div class="frame contributions">
+          <div class="card-content">
+
+           <h3> <%= @bookings_count %> </h3>
+           <p>Bookings received</p>
+         </div>
+       </div>
+       <div class="frame followers">
+        <div class="card-content">
+          <h3><%= @cashed_in%> $</h3>
+          <p>Cashed-in</p>
+        </div>
+      </div>
+      <div class="frame repo">
+        <div class="card-content">
+          <h3>****</h3>
+          <p>Rating</p>
+        </div>
+      </div>
+      <div class="frame bio">
+        <div class="card-services">
+          <h3>Services provided</h3>
+          <% @current_user.contractor.services.each do |serv| %>
+          <ul>
+            <li> <%= link_to serv.name, service_path(serv) %> </li>
+          </ul>
+          <% end %>
+        </div>
+      </div>
+      <div class="frame bookings  ">
+      <div class="row">
+        <div class="col-xs-3 col-md-2">
+          <h3>Confirmed Bookings</h3>
+          </div>
+        <div class="col-xs-12 col-md-10">
+         <div class="bookings-in">
+          <div class="row">
+    <% @bookings_list.each do |bkg| %>
+      <ul class="inbox">
+
+        <li class="message">
+          <img src="images/gab.png" alt="" class="avatar-large">
+          <div class="message-name">
+            <h3><%= cl_image_tag bkg.client.user.avatar %></h3>
+            <p> <%= bkg.client.user.first_name %></p>
+          </div>
+          <div class="message-body">
+            <p><strong><%= bkg.service.name%></strong></p>
+            <p>
+             <%= bkg.service.description%>
+            </p>
+          </div>
+          <div class="message-status">
+            <p class=""><%= bkg.date %></p>
+            <p class="price"><%= bkg.price %> $</p>
+          </div>
+        </li>
+
+      </ul>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
