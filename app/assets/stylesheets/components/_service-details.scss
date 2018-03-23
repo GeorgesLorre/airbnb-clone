@@ -5,6 +5,10 @@
   color: black;
   height: 60vh;
 
+  *{
+    padding: 1px;
+  }
+
   .service-element{
     margin: 3px;
     border-radius: 8px;
@@ -14,6 +18,8 @@
     grid-row: 1/ span 1;
     grid-column: 2/ span 3;
     background-color: white;
+    text-align: right;
+    padding-right: 10px;
 
   a{
     color: black;
@@ -43,11 +49,13 @@
   }
   #service-move{
     display: flex;
-
+    justify-content: space-evenly;
     grid-row: 4 /span 1;
     grid-column: 2 /span 3;
     background-color: white;
+    align-items: center;
     .service-price{
+      font-size: 24px;
     }
     .service-book{
       .booking_date{
@@ -58,6 +66,7 @@
       }
     }
     .service-location{
+
     }
   }
 }
