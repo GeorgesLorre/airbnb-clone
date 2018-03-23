@@ -1,24 +1,25 @@
 class ReviewsController < ApplicationController
   def create
-    @booking = Booking.find(params[:id])
-    @review = Review.new(review_params)
+    @booking = Booking.find(params[:booking_id])
+    @review  = Review.new(review_params)
     @service = @booking.service
     @review.booking = @booking
     if @review.save
       respond_to do |format|
-        format.html { redirect_to service_booking_path(@booking)}
-        format.js
+        flash[:notice]="Review saved"
+        format.html { redirect_to service_path(@service)}
       end
     else
       respond_to do |format|
-      format.html {'bookings/show'}
-      format.js
+        flash[:error]="Something went wrong"
+        format.html { redirect_to service_path(@service)}
     end
   end
+end
 
   private
 
   def review_params
-    params.require(:review).permit(:rating, :description)
+    params.require(:review).permit(:booking_id, :service_id, :rating, :description)
   end
 end

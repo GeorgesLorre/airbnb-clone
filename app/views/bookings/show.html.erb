@@ -19,7 +19,6 @@
   </p>
   <p style= "margin-right: 40px;"><h4><%=@booking.service.location%></h4>
   </p>
-<button class="btn-yours" type="button" style="background-color:#0F2333; ">Confirm</button>
 <%= render 'reviews/form', service: @service, booking: @booking, review: @review %>
 
 </div>
@@ -29,10 +28,5 @@
 <div id="reviews">
   <% if @booking.service.reviews.blank? %>
     Be the first to leave a review for <%= @booking.service.name %>
-    <%= render 'reviews/form', booking: @booking, review: @review %>
-  <% else %>
-    <% @booking.service.reviews.each do |review| %>
-      <% review.rating %> <% review.description %>
-    <% end %>
   <% end %>
 </div>
