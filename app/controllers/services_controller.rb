@@ -4,11 +4,23 @@ class ServicesController < ApplicationController
   skip_before_action :authenticate_user!, except: [:create, :update, :destroy]
 
   def index
-    @services = Service.all
+
+   respond_to do |format|
+    if params[:query].present?
+      sql_query = "name ILIKE :query OR category ILIKE :query"
+      @services = Service.where(sql_query, query: "%#{params[:query]}%")
+
+      format.js
+    else
+      @services = Service.all
+      format.html
+    end
+   end
   end
 
   def show
-   @booking = Booking.new
+     @booking = Booking.new
+     @markers =[{ 'lat': @service.latitude, 'lng': @service.longitude }]
   end
 
   def edit
