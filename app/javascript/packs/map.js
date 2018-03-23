@@ -1,4 +1,4 @@
-// import GMaps from 'gmaps/gmaps.js';
+import GMaps from 'gmaps/gmaps.js';
 
 
 // var mapElement = document.getElementById('map');
