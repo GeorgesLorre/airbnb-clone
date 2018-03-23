@@ -1,0 +1,6 @@
+
+<%= simple_form_for([ service, booking, review ]) do |form| %>
+  <%= form.input :rating %>
+  <%= form.input :description, as: :text %>
+  <%= form.button :submit %>
+<% end %>
