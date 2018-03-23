@@ -41,12 +41,14 @@ puts 'seeding'
   serviceInstance = Service.new( {name: Faker::Job.title,
                  description: Faker::ChuckNorris.fact,
                  price: rand(1000..10000),
-                 location: Faker::Simpsons.location,
+                 location: Faker::Address.city,
                  category: Faker::Job.field} )
   serviceInstance.contractor = contractorInstance
   serviceInstance.remote_photo_url = 'https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/tHF1OBF/4k-organized-criminal-gangsters-in-dark-parking-lot-doing-a-drug-deal_h7fugeodye_thumbnail-full01.png'
   serviceInstance.save
 
+  sleep(10)
+  puts 'sleeping'
   # create 20 random bookings and assign a random service and client
   2.times do
   bookingInstance = Booking.new( {date: Faker::Date.forward(50),

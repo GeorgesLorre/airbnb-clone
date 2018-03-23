@@ -1,0 +1,15 @@
+document.getElementById('banner').style.height = '30vh';
+// document.getElementById('banner').classList.add('pullUp');
+// document.getElementById('banner').classList.remove('pullUp');
+
+
+function updateServices(page){
+const servicesnode = document.getElementById('services-cards');
+  servicesnode.insertAdjacentHTML('beforeend', page);
+}
+
+
+document.getElementById('services-cards').innerHTML = "";
+<% @services.each do |service|  %>
+  updateServices('<%= j render "services/card", service: service %>');
+<% end %>

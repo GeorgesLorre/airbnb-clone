@@ -15,11 +15,11 @@
   <p><%= @booking.date %></p>
   <p style="font-size: 35px"><%= @booking.service.name %></p>
   <p style="font-size: 25px; margin-top: 5px;"><%= @booking.service.category %></p>
-  <p style= "margin-right: 60px;"><h4>Price: <%= @booking.price%>2.586€</h4>
+  <p style= "margin-right: 60px;"><h4>Price: <%= @booking.service.price%></h4>
   </p>
-  <p style= "margin-right: 40px;"><h4>Location: London</h4>
+  <p style= "margin-right: 40px;"><h4><%=@booking.service.location%></h4>
   </p>
-<button class="btn-yours" type="button" style="background-color:#0F2333; ">Confirm</button>
+<button class="btn-yours" type="button" style="background-color:#0F2333; "><p style="margin-bottom: 2px;">Add</p><p>Review</p></button>
 
 </div>
 </div>

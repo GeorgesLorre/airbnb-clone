@@ -1,18 +1,20 @@
 .service-details{
-  background-color: white;
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr 1fr;
+  grid-template-rows: 5vh 10vh 15vh 10vh 10vh;
   color: black;
-  position: relative;
   height: 60vh;
-  .service-book{
-  }
-  .service-links{
-    position: absolute;
-    top: 3px;
-    right: 3px;
 
-    padding: 0px 10px;
-    display: flex;
-    align-items: center;
+  .service-element{
+    margin: 3px;
+    border-radius: 8px;
+  }
+
+  .service-links{
+    grid-row: 1/ span 1;
+    grid-column: 2/ span 3;
+    background-color: white;
+
   a{
     color: black;
     text-decoration: none;
@@ -20,38 +22,51 @@
     }
   }
   .service-image{
-    position: absolute;
-
+    grid-row: 1 / span 4;
+    grid-column: 1 / span 1;
     border-radius: 8px;
-    bottom: 20px;
-    left: 20px;
-  }
-  .service-book{
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
+    height: 100%;
+    width: 100%;
   }
   .service-name{
-    position: absolute;
-    top: 40px;
-    left: 50px;
+    grid-row: 2 /span 1;
+    grid-column: 2 /span 3;
+    background-color: white;
     color: black;
     text-style: bold;
   }
   .service-description{
-    width: 400px;
-    text-align: left;
-    color: black;
-    position: absolute;
-    top: 200px;
-    left: 450px;
+    background-color: white;
+    grid-row: 3 /span 1;
+    grid-column: 2/ span 3;
+
   }
-  .service-price{
-    position: absolute;
-    bottom: 17px;
-    left: 400px;
-    color: black;
-    font-weight: bold;
-    font-size: 24px;
+  #service-move{
+    display: flex;
+
+    grid-row: 4 /span 1;
+    grid-column: 2 /span 3;
+    background-color: white;
+    .service-price{
+    }
+    .service-book{
+      .booking_date{
+        width: 40%;
+      }
+      #booking_date{
+        width: 100%;
+      }
+    }
+    .service-location{
+    }
   }
+}
+
+#togglecardsize{
+  transition: all 400ms;
+}
+
+#service-map{
+  transition: all 400ms;
+
 }
