@@ -52,14 +52,19 @@ h3 {
 .contributions {
   grid-column: 2 / span 1;
   grid-row: 1 / span 1;
+  padding-top: 35px;
 }
+
 .followers {
   grid-column: 3 / span 1;
   grid-row: 1 / span 1;
+  padding-top: 35px;
 }
+
 .repo {
   grid-column: 4 / span 1;
   grid-row: 1 / span 1;
+  padding-top: 35px;
 }
 
 .bookings {
